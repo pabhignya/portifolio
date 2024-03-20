@@ -1,0 +1,45 @@
+/* styles.css */
+.dark-theme {
+    background-color: #333; /* Dark mode background color */
+    color: #fff; /* Dark mode text color */
+  }
+  
+  .light-theme {
+    background-color: #fff; /* Light mode background color */
+    color: #333; /* Light mode text color */
+  }
+.theme-toggle-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white; /* Default text color for dark mode */
+    background-color: transparent;
+    box-shadow: none;
+    text-transform: none;
+    border: none;
+    outline: none;
+  }
+  
+  .light-theme .theme-toggle-button {
+    color: black; /* Text color for light mode */
+  }
+
+
+
+  .photoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .photo {
+    width: 200px; /* Adjust the size of the photo as needed */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
