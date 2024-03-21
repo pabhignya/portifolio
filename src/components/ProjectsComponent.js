@@ -150,7 +150,6 @@ function ProjectsComponent() {
                       width: '550px',
                       backgroundColor: darkMode ? '#fff' : '#555',
                       transform: hoveredCards[index] ? 'scale(1.05)' : 'scale(1)',
-                      marginBottom: '-20px',
                       boxShadow: hoveredCards[index] && !darkMode ? '0px 0px 20px 2px rgba(0,0,0,0.75)' : hoveredCards[index] && darkMode ? '0px 0px 20px 2px rgba(255,255,255,0.75)' : '0px 0px 0px 0px rgba(0,0,0,0.75)', // Adjusted boxShadow based on hover state and darkMode
                     }}
                     onMouseEnter={() => handleMouseEnter(index)}
