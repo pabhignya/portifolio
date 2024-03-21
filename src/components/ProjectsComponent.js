@@ -13,6 +13,7 @@ import nlpPhoto from '../files/nlp.png';
 function ProjectsComponent() {
   const { darkMode } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // Define isHovered state
   const projectsRef = useRef(null);
 
   useEffect(() => {
@@ -46,50 +47,9 @@ function ProjectsComponent() {
       summary: 'It is a Hospital Management System with robust features including patient registration, appointment scheduling, and EMR integration. ',
       codeUrl: 'https://github.com/pabhignya',
     },
-    {
-      id: 3,
-      title: ' EFFITASK',
-      imageUrl: todoPhoto,
-      summary: 'A responsive To-Do List Application with task management features and secure user authentication, achieving fast task confirmation response times.',
-      codeUrl: 'https://github.com/pabhignya',
-    },
-    {
-      id: 4,
-      title: 'Amazon Product Recommendation System',
-      imageUrl: amazonPhoto,
-      summary: 'A Python-based Amazon Product Recommendation System with high accuracy using collaborative filtering techniques',
-      codeUrl: 'https://github.com/pabhignya',
-    },
-    {
-      id: 5,
-      title: '  Khoury College IG Analysis And Reach Forecasting',
-      imageUrl: instaPhoto,
-      summary: 'An Instagram Analysis and Reach Forecasting tool, with Power BI for intuitive data visualization, facilitating actionable insights. ',
-      codeUrl: 'https://github.com/pabhignya',
-    },
-    {
-      id: 6,
-      title: ' ML For Handwritten Digits',
-      imageUrl: mnistPhoto,
-      summary: 'A sophisticated Machine Learning model for Handwritten Digit Recognition ',
-      codeUrl: 'https://github.com/pabhignya',
-    },
-    {
-      id: 7,
-      title: 'NLP for Stress Detection',
-      imageUrl: nlpPhoto,
-      summary: 'An NLP-based Stress Detection system using Python libraries and machine learning algorithms.',
-      codeUrl: 'https://github.com/pabhignya',
-    },
-    {
-      id: 8,
-      title: ' Spotify Music Recommendation system',
-      imageUrl: spotifyPhoto,
-      summary: 'A content-based spotify music recommendation system using Python libraries , Spotify API.',
-      codeUrl: 'https://github.com/pabhignya',
-    },
     // Add more projects as needed
   ];
+
   return (
     <div ref={projectsRef} style={{ paddingLeft: '72px', paddingRight: '72px', overflow: 'hidden' }}>
       <Typography variant="h4" style={{ padding: '20px' }}>Projects</Typography>
@@ -98,9 +58,13 @@ function ProjectsComponent() {
         {projects.map((project, index) => (
           <ListItem key={project.id} style={{ marginBottom: '20px' }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}> {/* Adjusted width for smaller screens */}
-                <Slide direction={index % 2 === 0 ? 'left' : 'right'} in={isVisible} timeout={500}>
-
+              <Grid item xs={12} md={6}>
+                <Slide
+                  direction={index % 2 === 0 ? 'left' : 'right'}
+                  in={isVisible}
+                  timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
+                  style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
+                >
                   <Card>
                     <CardMedia
                       component="img"
@@ -113,20 +77,31 @@ function ProjectsComponent() {
                 </Slide>
               </Grid>
               <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Slide direction={index % 2 === 0 ? 'left' : 'right'} in={isVisible} timeout={500}>
-                  <Card style={{
-                    textAlign: "justify",
-                    borderRadius: '12px',
-                    transition: 'transform 0.5s',
-                    marginLeft: '-200px',
-                    marginRight: '-50px',
-                    marginTop: '-20px',
-                    marginBottom: '-20px',
-                    transform: 'scale(1) rotate(0deg)',
-                    height: '200px',
-                    width: '550px',
-                    backgroundColor: darkMode ? '#fff' : '#555'
-                  }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1) rotate(-5deg)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}>
+                <Slide
+                  direction={index % 2 === 0 ? 'left' : 'right'}
+                  in={isVisible}
+                  timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
+                  style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
+                >
+                  <Card
+                    style={{
+                      marginLeft: '-200px',
+                      marginRight: '-50px',
+                      marginTop: '-20px',
+                      marginBottom: '-20px',
+                      textAlign: "justify",
+                      borderRadius: '12px',
+                      transition: 'transform 0.5s, box-shadow 0.5s',
+                      height: '200px',
+                      width: '550px',
+                      backgroundColor: darkMode ? '#fff' : '#555',
+                      transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+                      marginBottom: '-20px',
+                      boxShadow: isHovered && !darkMode ? '0px 0px 20px 2px rgba(0,0,0,0.75)' : isHovered && darkMode ? '0px 0px 20px 2px rgba(255,255,255,0.75)' : '0px 0px 0px 0px rgba(0,0,0,0.75)', // Adjusted boxShadow based on hover state and darkMode
+                    }}
+                    onMouseEnter={() => setIsHovered(true)} // Set hover state to true
+                    onMouseLeave={() => setIsHovered(false)} // Set hover state to false
+                  >
                     <CardContent style={{ position: 'relative', paddingBottom: '70px' }}>
                       <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
                       <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
