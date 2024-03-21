@@ -7,7 +7,16 @@ function ContactComponent() {
 
   return (
     <div style={{ paddingLeft: '72px', paddingBottom: '72px' }}>
+      <h2>About me</h2>
+      <div style={{ paddingLeft: '20px' }}>
+        <h6 style={{ fontSize: '1.2rem', fontWeight: 'normal', margin: 0, color: darkMode ? '#fff' : '#333' }}>
+          I am Abhignya Pachava, a Northeastern University graduate with over two years of professional experience in retail and hospitality industries. Passionate about delivering exceptional customer experiences and driving business growth.
+        </h6>
+
+
+      </div>
       <h2>Contact</h2>
+
       <div style={{ paddingLeft: '20px' }}>
         <h6 style={{ fontSize: '1.2rem', fontWeight: 'normal', lineHeight: 0, margin: 0, color: darkMode ? '#fff' : '#333' }}>
           Email: {' '}
@@ -22,6 +31,7 @@ function ContactComponent() {
         </h6>
 
       </div>
+
 
 
 

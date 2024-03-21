@@ -15,12 +15,13 @@ import ProjectsIcon from '@mui/icons-material/Work';
 import ThemeIcon from '@mui/icons-material/Brightness4';
 import { useTheme } from './ThemeProvider';
 import { Link as ScrollLink } from 'react-scroll';
-import ContactComponent from './ContactComponent';
+// import ContactComponent from './ContactComponent';
 import HomeComponent from './HomeComponent';
 import './styles.css';
 import ProjectsComponent from './ProjectsComponent';
 import SkillsComponent from './SkillsComponent';
 import ExperienceComponent from './ExperienceComponent';
+import AboutMeCard from './AboutMeCard';
 
 function MainComponent() {
     const { darkMode, toggleDarkMode } = useTheme();
@@ -108,8 +109,14 @@ function MainComponent() {
                 <div id="projects" style={{ paddingTop: '72px' }}>
                     <ProjectsComponent />
                 </div>
-                <div id="contact" style={{ paddingTop: '72px' }}>
-                    <ContactComponent />
+                <div id="contact" style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center', //paddingTop: '72px', paddingBottom: '72px'
+                }}>
+                    <AboutMeCard />
+                    {/* <ContactComponent /> */}
+
                 </div>
             </div>
         </div>
