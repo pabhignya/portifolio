@@ -4,7 +4,7 @@ import { ReactComponent as PythonIcon } from '../icons/python-svgrepo-com.svg';
 import { ReactComponent as JavaIcon } from '../icons/java-svgrepo-com.svg';
 import { ReactComponent as AWSIcon } from '../icons/aws-svgrepo-com.svg';
 import { ReactComponent as CSSIcon } from '../icons/css-svgrepo-com.svg';
-import { ReactComponent as GitIcon } from '../icons/git-svgrepo-com.svg';
+//import { ReactComponent as GitIcon } from '../icons/git-svgrepo-com.svg';
 import { ReactComponent as GCPIcon } from '../icons/google-cloud-svgrepo-com.svg';
 import { ReactComponent as HtmlIcon } from '../icons/html-svgrepo-com.svg';
 import { ReactComponent as JSIcon } from '../icons/javascript-16-svgrepo-com.svg';
@@ -13,7 +13,7 @@ import { ReactComponent as MYSQLIcon } from '../icons/mysql-logo-svgrepo-com.svg
 import { ReactComponent as NodeJSIcon } from '../icons/nodejs01-svgrepo-com.svg';
 import { ReactComponent as ReactIcon } from '../icons/react-svgrepo-com.svg';
 import { ReactComponent as TSIcon } from '../icons/typescript-official-svgrepo-com.svg';
-import { ReactComponent as VSCIcon } from '../icons/visual-studio-code-svgrepo-com.svg';
+//import { ReactComponent as VSCIcon } from '../icons/visual-studio-code-svgrepo-com.svg';
 
 function SkillsComponent() {
   return (

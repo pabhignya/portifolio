@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -11,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactIcon from '@mui/icons-material/ContactMail';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import ProjectsIcon from '@mui/icons-material/Work';
 import ThemeIcon from '@mui/icons-material/Brightness4';
 import { useTheme } from './ThemeProvider';
@@ -20,6 +20,7 @@ import HomeComponent from './HomeComponent';
 import './styles.css';
 import ProjectsComponent from './ProjectsComponent';
 import SkillsComponent from './SkillsComponent';
+import ExperienceComponent from './ExperienceComponent';
 
 function MainComponent() {
     const { darkMode, toggleDarkMode } = useTheme();
@@ -72,6 +73,14 @@ function MainComponent() {
                             <ListItemText primary="Contact" />
                         </ListItem>
                     </ScrollLink>
+                    <ScrollLink to="experience" spy={true} smooth={true} duration={500}>
+                        <ListItem button onClick={() => handleMenuItemClick('experience')}>
+                            <ListItemIcon>
+                                <WorkHistoryIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Experience" />
+                        </ListItem>
+                    </ScrollLink>
                     <ScrollLink to="projects" spy={true} smooth={true} duration={500}>
                         <ListItem button onClick={() => handleMenuItemClick('projects')}>
                             <ListItemIcon>
@@ -92,6 +101,9 @@ function MainComponent() {
                 <div id="home" style={{ paddingTop: '72px' }}>
                     <HomeComponent />
                     <SkillsComponent />
+                </div>
+                <div id="experience" style={{ paddingTop: '72px' }}>
+                    <ExperienceComponent />
                 </div>
                 <div id="projects" style={{ paddingTop: '72px' }}>
                     <ProjectsComponent />

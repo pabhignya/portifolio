@@ -1,12 +1,17 @@
 import React from 'react';
 import { Typography, Card, CardContent, CardMedia, Button, Grid, List, ListItem, Slide } from '@mui/material';
-import groceryPhoto from '../files/grocery.jpg';
-import hospitalPhoto from '../files/hospital.png';
-import todoPhoto from '../files/todo.png';
+import groceryPhoto from '../files/grocery.jpeg';
+import hospitalPhoto from '../files/hospital.jpg';
+import todoPhoto from '../files/todo.jpg';
+import amazonPhoto from '../files/amazon.jpeg';
+import mnistPhoto from '../files/mnist.png';
+import instaPhoto from '../files/insta.jpg';
+import spotifyPhoto from '../files/spotify.jpg';
+import nlpPhoto from '../files/nlp.png';
 import { useTheme } from './ThemeProvider';
 
 function ProjectsComponent() {
-  const { darkMode, toggleDarkMode } = useTheme();
+  const { darkMode } = useTheme();
 
   // Sample projects data
   const projects = [
@@ -34,35 +39,35 @@ function ProjectsComponent() {
     {
       id: 4,
       title: 'Amazon Product Recommendation System',
-      imageUrl: groceryPhoto,
+      imageUrl: amazonPhoto,
       summary: 'A Python-based Amazon Product Recommendation System with high accuracy using collaborative filtering techniques',
       codeUrl: 'https://github.com/pabhignya',
     },
     {
       id: 5,
       title: '  Khoury College IG Analysis And Reach Forecasting',
-      imageUrl: hospitalPhoto,
+      imageUrl: instaPhoto,
       summary: 'An Instagram Analysis and Reach Forecasting tool, with Power BI for intuitive data visualization, facilitating actionable insights. ',
       codeUrl: 'https://github.com/pabhignya',
     },
     {
       id: 6,
       title: ' ML For Handwritten Digits',
-      imageUrl: todoPhoto,
+      imageUrl: mnistPhoto,
       summary: 'A sophisticated Machine Learning model for Handwritten Digit Recognition ',
       codeUrl: 'https://github.com/pabhignya',
     },
     {
       id: 7,
       title: 'NLP for Stress Detection',
-      imageUrl: groceryPhoto,
+      imageUrl: nlpPhoto,
       summary: 'An NLP-based Stress Detection system using Python libraries and machine learning algorithms.',
       codeUrl: 'https://github.com/pabhignya',
     },
     {
       id: 8,
       title: ' Spotify Music Recommendation system',
-      imageUrl: hospitalPhoto,
+      imageUrl: spotifyPhoto,
       summary: 'A content-based spotify music recommendation system using Python libraries , Spotify API.',
       codeUrl: 'https://github.com/pabhignya',
     },
@@ -70,7 +75,7 @@ function ProjectsComponent() {
   ];
 
   return (
-    <div style={{paddingLeft: '72px', overflow: 'hidden' }}>
+    <div style={{ paddingLeft: '72px', overflow: 'hidden' }}>
       <Typography variant="h4" style={{ padding: '20px' }}>Projects</Typography>
       <Typography variant="h5" style={{ padding: '20px' }}>Work that I am proud of</Typography>
       <List>
@@ -91,6 +96,8 @@ function ProjectsComponent() {
               <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Slide direction="up" in={true} timeout={500}>
                   <Card style={{
+                    textAlign: "justify",
+                    borderRadius: '12px',
                     transition: 'transform 0.5s',
                     marginLeft: '-200px',
                     marginRight: '-50px',
@@ -101,13 +108,13 @@ function ProjectsComponent() {
                     width: '550px',
                     backgroundColor: darkMode ? '#fff' : '#555'
                   }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1) rotate(-5deg)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'}>
-                   <CardContent style={{ position: 'relative', paddingBottom: '70px' }}>
-  <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
-  <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
-  <div style={{ position: 'absolute', bottom: '20px', right: '10px' }}>
-    <Button variant="contained" color="primary" href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
-  </div>
-</CardContent>
+                    <CardContent style={{ position: 'relative', paddingBottom: '70px' }}>
+                      <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
+                      <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
+                      <div style={{ position: 'absolute', bottom: '20px', right: '10px' }}>
+                        <Button variant="contained" style={{color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff'}} href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
+                      </div>
+                    </CardContent>
 
 
 
