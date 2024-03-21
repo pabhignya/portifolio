@@ -111,61 +111,126 @@ function ProjectsComponent() {
       <List>
         {projects.map((project, index) => (
           <ListItem key={project.id} style={{ marginBottom: '20px' }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Slide
-                  direction={index % 2 === 0 ? 'left' : 'right'}
-                  in={isVisible}
-                  timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
-                  style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
-                >
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      height="100%"
-                      width="100%" // Set width to 100%
-                      image={project.imageUrl}
-                      alt={project.title}
-                    />
-                  </Card>
-                </Slide>
-              </Grid>
-              <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Slide
-                  direction={index % 2 === 0 ? 'left' : 'right'}
-                  in={isVisible}
-                  timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
-                  style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
-                >
-                  <Card
-                    style={{
-                      marginLeft: '-200px',
-                      marginRight: '-50px',
-                      marginTop: '-20px',
-                      marginBottom: '-20px',
-                      textAlign: "justify",
-                      borderRadius: '12px',
-                      transition: 'transform 0.5s, box-shadow 0.5s',
-                      height: '200px',
-                      width: '550px',
-                      backgroundColor: darkMode ? '#fff' : '#555',
-                      transform: hoveredCards[index] ? 'scale(1.05)' : 'scale(1)',
-                      boxShadow: hoveredCards[index] && !darkMode ? '0px 0px 20px 2px rgba(0,0,0,0.75)' : hoveredCards[index] && darkMode ? '0px 0px 20px 2px rgba(255,255,255,0.75)' : '0px 0px 0px 0px rgba(0,0,0,0.75)', // Adjusted boxShadow based on hover state and darkMode
-                    }}
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={() => handleMouseLeave(index)}
-                  >
-                    <CardContent style={{ position: 'relative', paddingBottom: '70px' }}>
-                      <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
-                      <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
-                      <div style={{ position: 'absolute', bottom: '20px', right: '10px' }}>
-                        <Button variant="contained" style={{ color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff' }} href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Slide>
-              </Grid>
-            </Grid>
+            {
+              index % 2 === 1 ?
+                (
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Slide
+                        direction={index % 2 === 0 ? 'left' : 'right'}
+                        in={isVisible}
+                        timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
+                        style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
+                      >
+                        <Card
+                          style={{
+                            marginLeft: '-50px',
+                            marginRight: '-200px',
+                            marginTop: '-20px',
+                            marginBottom: '-20px',
+                            textAlign: "justify",
+                            borderRadius: '12px',
+                            transition: 'transform 0.5s, box-shadow 0.5s',
+                            height: '200px',
+                            width: '550px',
+                            backgroundColor: darkMode ? '#fff' : '#555',
+                            transform: hoveredCards[index] ? 'scale(1.05)' : 'scale(1)',
+                            zIndex: 2,
+                            boxShadow: hoveredCards[index] && !darkMode ? '0px 0px 20px 2px rgba(0,0,0,0.75)' : hoveredCards[index] && darkMode ? '0px 0px 20px 2px rgba(255,255,255,0.75)' : '0px 0px 0px 0px rgba(0,0,0,0.75)', // Adjusted boxShadow based on hover state and darkMode
+                          }}
+                          onMouseEnter={() => handleMouseEnter(index)}
+                          onMouseLeave={() => handleMouseLeave(index)}
+                        >
+                          <CardContent style={{ position: 'relative', paddingBottom: '70px' }}>
+                            <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
+                            <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
+                            <div style={{ position: 'absolute', bottom: '20px', right: '10px' }}>
+                              <Button variant="contained" style={{ color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff' }} href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Slide>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Slide
+                        direction={index % 2 === 0 ? 'left' : 'right'}
+                        in={isVisible}
+                        timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
+                        style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
+                      >
+                        <Card>
+                          <CardMedia
+                            component="img"
+                            height="70%"
+                            width="80%" // Set width to 100%
+                            image={project.imageUrl}
+                            alt={project.title}
+                          />
+                        </Card>
+                      </Slide>
+                    </Grid>
+
+                  </Grid>
+                ) :
+                (<Grid container spacing={2}>
+
+                  <Grid item xs={12} md={6}>
+                    <Slide
+                      direction={index % 2 === 0 ? 'left' : 'right'}
+                      in={isVisible}
+                      timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
+                      style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
+                    >
+                      <Card>
+                        <CardMedia
+                          component="img"
+                          height="70%"
+                          width="80%" // Set width to 100%
+                          image={project.imageUrl}
+                          alt={project.title}
+                        />
+                      </Card>
+                    </Slide>
+                  </Grid>
+                  <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Slide
+                      direction={index % 2 === 0 ? 'left' : 'right'}
+                      in={isVisible}
+                      timeout={{ enter: 1000, exit: 500 }} // Increase enter duration for a more noticeable effect
+                      style={{ transitionDelay: index * 200 }} // Add a delay to each slide to stagger the animation
+                    >
+                      <Card
+                        style={{
+                          marginLeft: '-200px',
+                          marginRight: '-50px',
+                          marginTop: '-20px',
+                          marginBottom: '-20px',
+                          textAlign: "justify",
+                          borderRadius: '12px',
+                          transition: 'transform 0.5s, box-shadow 0.5s',
+                          height: '200px',
+                          width: '550px',
+                          backgroundColor: darkMode ? '#fff' : '#555',
+                          transform: hoveredCards[index] ? 'scale(1.05)' : 'scale(1)',
+                          boxShadow: hoveredCards[index] && !darkMode ? '0px 0px 20px 2px rgba(0,0,0,0.75)' : hoveredCards[index] && darkMode ? '0px 0px 20px 2px rgba(255,255,255,0.75)' : '0px 0px 0px 0px rgba(0,0,0,0.75)', // Adjusted boxShadow based on hover state and darkMode
+                        }}
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={() => handleMouseLeave(index)}
+                      >
+                        <CardContent style={{ position: 'relative', paddingBottom: '70px' }}>
+                          <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
+                          <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
+                          <div style={{ position: 'absolute', bottom: '20px', right: '10px' }}>
+                            <Button variant="contained" style={{ color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff' }} href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Slide>
+                  </Grid>
+                </Grid>)
+            }
+
+
           </ListItem>
         ))}
       </List>

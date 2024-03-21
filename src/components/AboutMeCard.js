@@ -41,7 +41,7 @@ function AboutMeCard() {
                         transform: `rotateY(${flipped ? -180 : 0}deg)`, // Apply separate transformation to back content
                     }}
                 >
-                    {flipped ? (
+                    {!flipped ? (
                         <div>
                             <Typography variant="h5" style={{ fontWeight: 'bold' }}>Contact Details</Typography>
                             <Typography>
@@ -71,7 +71,7 @@ function AboutMeCard() {
                         </div>
                     )}
                     <Button onClick={handleFlip} style={{ marginTop: '20px', color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff' }}>
-                        {flipped ? 'About me' : 'Contact'}
+                        {!flipped ? 'About me' : 'Contact'}
                     </Button>
                 </CardContent>
             </Card>
