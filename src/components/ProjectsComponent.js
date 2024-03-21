@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Typography, Card, CardContent, CardMedia, Button, Grid, List, ListItem, Slide } from '@mui/material';
+import { useTheme } from './ThemeProvider';
 import groceryPhoto from '../files/grocery.jpeg';
 import hospitalPhoto from '../files/hospital.jpg';
 import todoPhoto from '../files/todo.jpg';
@@ -8,12 +9,28 @@ import mnistPhoto from '../files/mnist.png';
 import instaPhoto from '../files/insta.jpg';
 import spotifyPhoto from '../files/spotify.jpg';
 import nlpPhoto from '../files/nlp.png';
-import { useTheme } from './ThemeProvider';
 
 function ProjectsComponent() {
   const { darkMode } = useTheme();
+  const [isVisible, setIsVisible] = useState(false);
+  const projectsRef = useRef(null);
 
-  // Sample projects data
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      });
+    });
+
+    observer.observe(projectsRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -73,28 +90,30 @@ function ProjectsComponent() {
     },
     // Add more projects as needed
   ];
-
   return (
-    <div style={{ paddingLeft: '72px', overflow: 'hidden' }}>
+    <div ref={projectsRef} style={{ paddingLeft: '72px', paddingRight: '72px', overflow: 'hidden' }}>
       <Typography variant="h4" style={{ padding: '20px' }}>Projects</Typography>
       <Typography variant="h5" style={{ padding: '20px' }}>Work that I am proud of</Typography>
       <List>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <ListItem key={project.id} style={{ marginBottom: '20px' }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Card>
-                  <CardMedia
-                    component="img"
-                    width="175"
-                    height="300"
-                    image={project.imageUrl}
-                    alt={project.title}
-                  />
-                </Card>
+              <Grid item xs={12} md={6}> {/* Adjusted width for smaller screens */}
+                <Slide direction={index % 2 === 0 ? 'left' : 'right'} in={isVisible} timeout={500}>
+
+                  <Card>
+                    <CardMedia
+                      component="img"
+                      height="100%"
+                      width="100%" // Set width to 100%
+                      image={project.imageUrl}
+                      alt={project.title}
+                    />
+                  </Card>
+                </Slide>
               </Grid>
               <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Slide direction="up" in={true} timeout={500}>
+                <Slide direction={index % 2 === 0 ? 'left' : 'right'} in={isVisible} timeout={500}>
                   <Card style={{
                     textAlign: "justify",
                     borderRadius: '12px',
@@ -112,12 +131,9 @@ function ProjectsComponent() {
                       <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold' }}>{project.title}</Typography>
                       <Typography variant="body1" color={darkMode ? '#333' : '#fff'}>{project.summary}</Typography>
                       <div style={{ position: 'absolute', bottom: '20px', right: '10px' }}>
-                        <Button variant="contained" style={{color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff'}} href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
+                        <Button variant="contained" style={{ color: darkMode ? '#fff' : '#333', background: darkMode ? '#333' : '#fff' }} href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code</Button>
                       </div>
                     </CardContent>
-
-
-
                   </Card>
                 </Slide>
               </Grid>

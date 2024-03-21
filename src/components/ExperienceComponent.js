@@ -45,15 +45,13 @@ function ExperienceComponent() {
         // Add more projects as needed
     ];
     return (
-
-        <div style={{ paddingLeft: '72px', overflow: 'hidden' }}>
+        <div style={{ paddingLeft: '72px', paddingRight: '72px', overflow: 'hidden' }}>
             <Typography variant="h4" style={{ padding: '20px' }}>Work Experience</Typography>
-            <List style={{ padding: '36px' }}>
+            <List style={{ padding: '36px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 {projects.map((project) => (
-                    <ListItem key={project.id} style={{ marginBottom: '20px' }}>
-                        <Card style={{ borderRadius: '12px',width: '100%', height:project.height, backgroundColor: darkMode ? '#fff5ee' : '#353935' }}>
+                    <ListItem key={project.id} style={{ marginBottom: '20px', width: '100%', maxWidth: '800px' }}>
+                        <Card style={{ borderRadius: '12px', width: '100%', backgroundColor: darkMode ? '#fff5ee' : '#353935' }}>
                             <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-
                                 <div style={{ width: '170px', height: '170px', marginRight: '20px' }}>
                                     <CardMedia
                                         component="img"
@@ -62,19 +60,16 @@ function ExperienceComponent() {
                                         style={{ width: '170px', height: '170px', objectFit: 'cover', padding: '16px' }}
                                     />
                                 </div>
-
-                                <div>
-                                    <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold', margin: '16px'}}>{project.title}</Typography>
-                                    <Typography variant="body1" color={darkMode ? '#333' : '#fff'} style={{ margin: '16px', textAlign: "justify" }}>{project.summary}</Typography>
-                                </div>
+                                <div style={{ flex: 1, marginLeft:'16px' }}>
+                                    <Typography variant="h6" color={darkMode ? '#333' : '#fff'} style={{ fontWeight: 'bold', marginBottom: '8px' }}>{project.title}</Typography>
+                                    <Typography variant="body1" color={darkMode ? '#333' : '#fff'} style={{ marginBottom: '16px', textAlign: 'justify' }}>{project.summary}</Typography>
+                                      </div>
                             </CardContent>
                         </Card>
                     </ListItem>
                 ))}
             </List>
         </div>
-
-
     );
 }
 
